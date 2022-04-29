@@ -1,0 +1,18 @@
+<div class="col-xs-12">
+    <h2>Mes appareils</h2>
+    <!--PIPE-->
+    <!--<p>Mise à jour : {{lastUpdate | date: "dd/MM/yyyy HH:mm" | uppercase}}</p>-->
+     <!--PIPE ASYNC-->
+    <p>Mise à jour : {{lastUpdate | async | date: "yyyy-MM-dd"}}</p>
+    <ul class="list-group">
+      <!--Directive structurelle FOR et PropertyBinding -->
+      <app-appareil *ngFor="let appareil of appareils; let i = index" 
+      [appareilIndex]="i" 
+      [appareilName]="appareil.name" 
+      [appareilStatus]="appareil.status"
+      [id]="appareil.id"></app-appareil>
+    </ul>
+    <button class="btn btn-success" [disabled]="!isAuth" (click)="onTurnOn()"> tout allumer</button>
+    <button class="btn btn-danger" [disabled]="!isAuth" (click)="onTurnOff()"> tout éteindre</button>
+
+  </div>

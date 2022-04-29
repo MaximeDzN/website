@@ -1,0 +1,55 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults || isRateLimitReached">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
+      GitHub's API rate limit has been reached. It will be reset in one minute.
+    </div>
+  </div>
+
+  <div class="example-table-container">
+
+    <table mat-table [dataSource]="artists" class="example-table" >
+      <caption>Table présentant tous les artistes</caption>
+           <ng-container matColumnDef="nickname">
+            <th mat-header-cell *matHeaderCellDef> Pseudonyme </th>
+            <td mat-cell *matCellDef="let artist"> {{artist.nickName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="firstname">
+            <th mat-header-cell *matHeaderCellDef> prénom </th>
+            <td mat-cell *matCellDef="let artist"> {{artist.firstName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="lastname">
+            <th mat-header-cell *matHeaderCellDef> nom </th>
+            <td mat-cell *matCellDef="let artist"> {{artist.lastName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="birthDate">
+            <th mat-header-cell *matHeaderCellDef> date de naissance </th>
+            <td mat-cell *matCellDef="let artist"> {{artist.birthDate | date:"dd/MM/yyyy"}} </td>
+          </ng-container>
+          <ng-container matColumnDef="artistStyle">
+            <th mat-header-cell *matHeaderCellDef> Style de musique </th>
+            <td mat-cell *matCellDef="let artist"> {{artist.artistStyle}} </td>
+          </ng-container>
+          <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef> Date de création</th>
+            <td mat-cell *matCellDef="let artist"> {{artist.createdAt | date:"dd/MM/yyyy"}}</td>
+          </ng-container>
+          <ng-container matColumnDef="updatedAt">
+            <th mat-header-cell *matHeaderCellDef> Dernière modification</th>
+            <td mat-cell *matCellDef="let artist"> {{artist.modifiedAt | date:"dd/MM/yyyy"}}</td>
+          </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <mat-paginator [length]="resultsLength" [pageSize]="20" aria-label="Select page of GitHub search results"></mat-paginator>
+</div>
+
+
+<!-- Copyright 2022 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->
+
