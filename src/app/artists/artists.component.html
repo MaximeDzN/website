@@ -1,9 +1,20 @@
+<h1>Dernier artiste ajouté</h1>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{latestArtist?.firstName}} {{latestArtist?.lastName}}</mat-card-title>
+    <mat-card-subtitle>{{latestArtist?.birthDate | date:"dd/MM/yyyy"}}</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
+
+<h1>Liste des artistes de l'application</h1>
+
 <div class="example-container mat-elevation-z8">
   <div class="example-loading-shade"
        *ngIf="isLoadingResults || isRateLimitReached">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     <div class="example-rate-limit-reached" *ngIf="isRateLimitReached">
-      GitHub's API rate limit has been reached. It will be reset in one minute.
+      Limite atteinte ou contenu indisponible.
     </div>
   </div>
 
@@ -45,11 +56,10 @@
     </table>
   </div>
 
-  <mat-paginator [length]="resultsLength" [pageSize]="20" aria-label="Select page of GitHub search results"></mat-paginator>
+  <mat-paginator [length]="resultsLength" [pageSize]="20" aria-label="Choisir une page de résultat"></mat-paginator>
 </div>
 
+<h1>Ajouter un artiste à l'application</h1>
+<app-create-artist (updateLatestArtist)="loadLatest()"></app-create-artist>
 
-<!-- Copyright 2022 Google LLC. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at https://angular.io/license -->
 

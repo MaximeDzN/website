@@ -13,9 +13,11 @@ import { ArtistsService } from '../service/artists.service';
 export class ArtistsComponent {
 
   artistsSub: Subscription | undefined;
+  latestArtistSub : Subscription | undefined;
 
   displayedColumns: string[] = ['nickname', 'firstname', 'lastname', 'birthDate', 'artistStyle', 'createdAt', 'updatedAt'];
   artists: Artist[] = [];
+  latestArtist : Artist | undefined;
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
@@ -25,7 +27,7 @@ export class ArtistsComponent {
   constructor(private artistService: ArtistsService) { }
 
   ngAfterViewInit() {
-    //this.loadData();
+    this.loadLatest();
     merge(this.paginator!.page)
       .pipe(
         startWith({}),
@@ -43,6 +45,18 @@ export class ArtistsComponent {
           return data._embedded.artists;
         })
       ).subscribe({ next: data => (this.artists = data) });
+        
+     
+  }
+
+  loadLatest() {
+    this.latestArtistSub = this.artistService.getLatest().subscribe({
+      next: (artist) => {
+        this.latestArtist = artist;
+         console.log(artist);
+        },
+      error: (error) => {console.log(error);}
+    })
   }
   /*
   

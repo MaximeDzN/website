@@ -8,7 +8,8 @@ import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import {MatCardModule} from '@angular/material/card'; 
+import { ReactiveFormsModule } from '@angular/forms';
 //Components
 import { AppComponent } from './app.component';
 import { AppareilComponent } from './appareil/appareil.component';
@@ -17,12 +18,12 @@ import { AuthComponent } from './auth/auth.component';
 import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
 import { FourOFourComponent } from './four-o-four/four-o-four.component';
 import { ArtistsComponent } from './artists/artists.component';
-
 //Services
 import { AppareilService } from './service/appareil.service';
 import { AuthService } from './service/auth.service';
 import { AuthGuard } from './service/auth-guard-service';
 import { ArtistsService } from './service/artists.service';
+import { CreateArtistComponent } from './artists/create-artist/create-artist.component';
 
 
 
@@ -34,7 +35,8 @@ import { ArtistsService } from './service/artists.service';
     AppareilViewComponent,
     SingleAppareilComponent,
     FourOFourComponent,
-    ArtistsComponent
+    ArtistsComponent,
+    CreateArtistComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,9 @@ import { ArtistsService } from './service/artists.service';
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [AppareilService,AuthService,AuthGuard,ArtistsService],
   bootstrap: [AppComponent]

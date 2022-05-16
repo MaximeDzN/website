@@ -1,12 +1,12 @@
 export interface Artist {
 
-    id:number;
+    id:number | undefined;
     nickname: string;
     firstName: string;
-    lastname: string;
-    birthdate: Date;
-    createdAt: Date;
-    modifiedAt: Date;
-    artistStyle: string;
+    lastName: string;
+    birthDate: string;
+    createdAt: Date | undefined;
+    modifiedAt: Date | undefined;
+    artistStyle: string | undefined;
   
 }

@@ -1,0 +1,12 @@
+<form [formGroup]="artistForm" (ngSubmit)="onSubmit()">
+    <label for="first-name">Prénom: </label>
+    <input id="first-name" type="text" formControlName="firstName" required>
+  
+    <label for="last-name">Nom: </label>
+    <input id="last-name" type="text" formControlName="lastName">
+    <label for="nick-name">Pseudonyme: </label>
+    <input id="nick-name" type="text" formControlName="nickName">
+    <label for="birth-date">Date de naissance: </label>
+    <input id="birth-date" type="date" formControlName="birthDate">
+  <button type="submit" [disabled]="!artistForm.valid">Enregistrer</button>
+</form>

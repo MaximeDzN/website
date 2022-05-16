@@ -15,8 +15,6 @@ const routes: Routes = [
   {path:"",component: AppareilViewComponent},
   {path:"not-found",component: FourOFourComponent},
   {path:"**", redirectTo:"/not-found"},
-
-
 ];
 
 @NgModule({
